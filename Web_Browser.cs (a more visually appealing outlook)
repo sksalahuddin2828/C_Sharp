@@ -1,0 +1,141 @@
+// To create dynamic buttons with a more visually appealing outlook similar to Mozilla Firefox, you can utilize custom graphics and styling. Here's an example of how you can modify the code to create custom buttons using images and improve the overall look:
+// In this example, I have modified the code to use custom images for the back, forward, and go buttons. You need to provide the corresponding image files (go.png, back.png, forward.png) in the application directory or update the file paths accordingly.
+// Please note that the appearance and styling of the buttons can be further customized based on your preferences by adjusting properties like size, margins, padding, and background images. You can also explore other options such as using vector icons or designing custom buttons using graphics libraries.
+
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace WebBrowserApp
+{
+    public class MyWebBrowser : Form
+    {
+        private TextBox searchBox;
+        private Button goButton;
+        private Button backButton;
+        private Button forwardButton;
+        private WebBrowser webBrowser;
+
+        public MyWebBrowser()
+        {
+            InitializeComponents();
+            SetupBrowser();
+        }
+
+        private void InitializeComponents()
+        {
+            // Window setup
+            Text = "Sk. Salahuddin - Morning 01 Batch";
+            Width = 800;
+            Height = 600;
+
+            // Search box
+            searchBox = new TextBox
+            {
+                PlaceholderText = "Search Google",
+                Height = 30,
+                Left = 10,
+                Top = 10,
+                Width = 500,
+                Font = new Font("Arial", 12)
+            };
+
+            // Go button
+            goButton = new Button
+            {
+                Height = 30,
+                Left = searchBox.Right + 10,
+                Top = 10,
+                Width = 50
+            };
+            goButton.BackgroundImage = Image.FromFile("go.png");
+            goButton.BackgroundImageLayout = ImageLayout.Zoom;
+
+            // Back button
+            backButton = new Button
+            {
+                Height = 30,
+                Left = goButton.Right + 10,
+                Top = 10,
+                Width = 30
+            };
+            backButton.BackgroundImage = Image.FromFile("back.png");
+            backButton.BackgroundImageLayout = ImageLayout.Zoom;
+
+            // Forward button
+            forwardButton = new Button
+            {
+                Height = 30,
+                Left = backButton.Right + 5,
+                Top = 10,
+                Width = 30
+            };
+            forwardButton.BackgroundImage = Image.FromFile("forward.png");
+            forwardButton.BackgroundImageLayout = ImageLayout.Zoom;
+
+            // Web browser control
+            webBrowser = new WebBrowser
+            {
+                Dock = DockStyle.Fill
+            };
+
+            // Event handlers
+            goButton.Click += GoButton_Click;
+            backButton.Click += BackButton_Click;
+            forwardButton.Click += ForwardButton_Click;
+            searchBox.KeyPress += SearchBox_KeyPress;
+
+            // Adding controls to the form
+            Controls.Add(searchBox);
+            Controls.Add(goButton);
+            Controls.Add(backButton);
+            Controls.Add(forwardButton);
+            Controls.Add(webBrowser);
+        }
+
+        private void SetupBrowser()
+        {
+            webBrowser.Url = new Uri("https://www.google.com/");
+        }
+
+        private void GoButton_Click(object sender, EventArgs e)
+        {
+            Navigate(searchBox.Text);
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            if (webBrowser.CanGoBack)
+                webBrowser.GoBack();
+        }
+
+        private void ForwardButton_Click(object sender, EventArgs e)
+        {
+            if (webBrowser.CanGoForward)
+                webBrowser.GoForward();
+        }
+
+        private void SearchBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                Navigate(searchBox.Text);
+                e.Handled = true;
+            }
+        }
+
+        private void Navigate(string url)
+        {
+            if (!url.StartsWith("http"))
+                url = "https://www.google.com/search?q=" + url;
+
+            webBrowser.Navigate(url);
+        }
+
+        [STAThread]
+        public static void Main()
+        {
+            Application.Run(new MyWebBrowser());
+        }
+    }
+}
