@@ -42,6 +42,23 @@ class Program {
 
 // 2. Reversing an Integer:
 
+using System;
+
+class Program {
+    static void Main() {
+        int number = 12345;
+        int reversed_number = 0;
+
+        while (number != 0) {
+            reversed_number = reversed_number * 10 + number % 10;
+            number = number / 10;
+        }
+
+        Console.Write(reversed_number);
+        return;
+    }
+}
+
 //----------------------------------------------------------------------------------------------------------------------------------------------
 
 // 3.
