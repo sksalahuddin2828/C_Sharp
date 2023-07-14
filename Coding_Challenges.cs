@@ -111,4 +111,23 @@ class Program {
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
 
-// 5. 
+// 5. Finding the Average of Numbers:
+
+using System;
+
+class Program {
+    static void Main() {
+        int[] numbers = {10, 20, 30, 40, 50};
+        int size = numbers.Length;
+        int sum = 0;
+
+        for (int i = 0; i < size; i++) {
+            sum += numbers[i];
+        }
+
+        float average = (float)sum / size;
+        Console.Write("Average: " + average);
+        return;
+    }
+}
+
