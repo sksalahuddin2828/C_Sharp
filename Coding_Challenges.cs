@@ -90,6 +90,25 @@ class Program {
 
 // 4. Returning the Nth Value from the Fibonacci Sequence:
 
+using System;
+
+class Program {
+    static int Fibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        } else {
+            return Fibonacci(n - 1) + Fibonacci(n - 2);
+        }
+    }
+
+    static void Main() {
+        int n = 10;
+        int fibonacci_number = Fibonacci(n);
+        Console.Write(fibonacci_number);
+        return;
+    }
+}
+
 //----------------------------------------------------------------------------------------------------------------------------------------------
 
 // 5. 
