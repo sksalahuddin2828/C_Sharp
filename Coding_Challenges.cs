@@ -61,7 +61,30 @@ class Program {
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
 
-// 3.
+// 3. Printing the Fibonacci Series using Recursion:
+
+using System;
+
+class Program {
+    static int Fibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        } else {
+            return Fibonacci(n - 1) + Fibonacci(n - 2);
+        }
+    }
+
+    static void Main() {
+        int n = 10;
+        Console.Write("Fibonacci series: ");
+
+        for (int i = 0; i < n; i++) {
+            Console.Write(Fibonacci(i) + " ");
+        }
+
+        return;
+    }
+}
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
 
