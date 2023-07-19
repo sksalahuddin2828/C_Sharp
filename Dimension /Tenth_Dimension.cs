@@ -127,3 +127,72 @@ class HypercubePlot
         form.ShowDialog();
     }
 }
+
+
+
+
+\\-----------------------------------------------------------------------------------------------------------------------
+\\------------------------------------------------Windows Forms Usage:---------------------------------------------------
+\\-----------------------------------------------------------------------------------------------------------------------
+
+    
+
+using System;
+using System.Linq;
+using MathNet.Numerics.LinearAlgebra;
+using MathNet.Numerics.LinearAlgebra.Double;
+using OxyPlot;
+using OxyPlot.Series;
+
+class HypercubePlot
+{
+    // ... (The rest of the code remains unchanged)
+
+    static void Main(string[] args)
+    {
+        // ... (The rest of the code remains unchanged)
+
+        // Add the plot view to a Windows Forms container to display it
+        var form = new System.Windows.Forms.Form { Width = 800, Height = 600 };
+        form.Controls.Add(plotView); // Add the OxyPlot view to the form
+        form.ShowDialog();
+    }
+}
+
+
+
+\\-----------------------------------------------------------------------------------------------------------------------
+\\-----------------------------------------------------WPF Usage:--------------------------------------------------------
+\\-----------------------------------------------------------------------------------------------------------------------
+
+    
+
+using System;
+using System.Linq;
+using MathNet.Numerics.LinearAlgebra;
+using MathNet.Numerics.LinearAlgebra.Double;
+using OxyPlot;
+using OxyPlot.Series;
+using System.Windows;
+
+class HypercubePlot
+{
+    // ... (The rest of the code remains unchanged)
+
+    static void Main(string[] args)
+    {
+        // ... (The rest of the code remains unchanged)
+
+        // Add the plot view to a WPF container to display it
+        var window = new Window { Width = 800, Height = 600 };
+        var grid = new System.Windows.Controls.Grid();
+        window.Content = grid;
+
+        // Add the OxyPlot view to the grid
+        grid.Children.Add(plotView);
+
+        // Show the WPF window
+        window.ShowDialog();
+    }
+}
+    
