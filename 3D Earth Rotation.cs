@@ -32,7 +32,7 @@ namespace EarthRotationAnimation
 
             SuspendLayout();
             mapControl.Dock = DockStyle.Fill;
-            mapControl.MapProvider = GMapProviders.OpenStreetMap;
+            mapControl.MapProvider = GMapProviders.GoogleMap;
             mapControl.Position = new PointLatLng(0, 0);
             mapControl.Zoom = 1;
             mapControl.MouseWheelZoomEnabled = false;
